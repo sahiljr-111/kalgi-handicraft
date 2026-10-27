@@ -7,7 +7,7 @@ import { WhatsAppIcon } from './WhatsAppIcon';
 /** Share on WhatsApp, or copy the link. */
 export function ShareButtons({ url, title }: { url: string; title: string }) {
   const [copied, setCopied] = useState(false);
-  const btn = 'inline-flex items-center gap-1.5 rounded-full border border-line px-3 py-1.5 text-xs font-medium text-ink-soft transition hover:border-navy hover:text-ink';
+  const btn = 'inline-flex items-center gap-1.5 rounded-full border border-line px-3.5 py-2 text-xs font-medium text-ink-soft transition hover:border-navy hover:text-ink';
   return (
     <div className="flex items-center gap-2">
       <span className="text-xs text-muted">Share:</span>

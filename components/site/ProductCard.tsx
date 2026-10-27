@@ -8,7 +8,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
   const second = product.images.find((i) => i !== img);
   return (
     <article className="group relative flex flex-col">
-      <div className="relative aspect-square overflow-hidden rounded-2xl bg-paper">
+      <div className="relative aspect-square overflow-hidden rounded-xl bg-paper sm:rounded-2xl">
         {img ? (
           <>
             <Image
@@ -33,19 +33,19 @@ export function ProductCard({ product, priority = false }: { product: Product; p
           <div className="jaal grid h-full place-items-center bg-navy text-sm text-ivory/70">Photo coming soon</div>
         )}
         {product.isFeatured && (
-          <span className="absolute top-2 left-2 rounded-full bg-gold-soft px-2 py-0.5 text-[0.65rem] font-semibold tracking-wide text-navy sm:top-3 sm:left-3 sm:px-2.5 sm:py-1 sm:text-[0.7rem]">
+          <span className="absolute top-1.5 left-1.5 rounded-full bg-gold-soft px-1.5 py-0.5 text-[0.625rem] font-semibold tracking-wide text-navy uppercase sm:top-3 sm:left-3 sm:px-2.5 sm:py-1 sm:text-[0.7rem] sm:normal-case">
             Top selling
           </span>
         )}
       </div>
-      <div className="flex flex-1 flex-col pt-3 sm:pt-4">
-        <p className="truncate text-[0.7rem] font-medium tracking-wide text-muted sm:text-xs">{product.category?.name}</p>
-        <h3 className="mt-1 font-display text-[0.95rem] leading-snug text-ink sm:text-lg">
+      <div className="flex flex-1 flex-col pt-2 sm:pt-4">
+        <p className="truncate text-[0.6875rem] text-muted sm:text-xs sm:font-medium">{product.category?.name}</p>
+        <h3 className="mt-0.5 line-clamp-2 font-sans text-sm leading-snug font-medium text-ink sm:mt-1 sm:font-display sm:text-lg sm:font-normal">
           <Link href={`/product/${product.slug}`} className="after:absolute after:inset-0">
             {product.name}
           </Link>
         </h3>
-        <p className="mt-auto pt-1.5 text-xs text-ink-soft sm:pt-2 sm:text-sm">
+        <p className="mt-auto pt-1 text-[0.8125rem] text-ink-soft sm:pt-2 sm:text-sm">
           {product.priceFrom > 0 ? (
             <>
               From <span className="font-semibold text-navy">{formatPrice(product.priceFrom)}</span>{' '}

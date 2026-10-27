@@ -60,14 +60,15 @@ export function Hero({ settings, categories, featured, heroProducts = [] }: Prop
       <div className="jaal absolute inset-0 -z-10 opacity-50 [mask-image:linear-gradient(to_bottom,black,transparent_85%)]" />
 
       <div className="flex flex-1 items-center">
-        <div className="site-container grid items-center gap-10 py-10 sm:py-12 md:grid-cols-[1.15fr_1fr] md:gap-8 md:py-14 lg:grid-cols-[1.2fr_1fr] lg:gap-12 lg:py-5 laptop:py-10 wide:gap-16 wide:py-14">
-          <div className="min-w-0">
-            <p className="flex items-center gap-3 text-[0.7rem] font-semibold tracking-[0.22em] text-gold-soft uppercase sm:text-xs wide:text-[0.8125rem]">
-              <span className="h-px w-8 bg-gold-soft/70" aria-hidden="true" />
+        <div className="site-container grid items-center gap-6 py-6 sm:gap-10 sm:py-12 md:grid-cols-[1.15fr_1fr] md:gap-8 md:py-14 lg:grid-cols-[1.2fr_1fr] lg:gap-12 lg:py-5 laptop:py-10 wide:gap-16 wide:py-14">
+          <div className="min-w-0 text-center md:text-left">
+            <p className="flex items-center justify-center gap-2.5 md:justify-start text-[0.6875rem] font-semibold tracking-[0.12em] text-gold-soft uppercase sm:gap-3 sm:text-xs sm:tracking-[0.2em] wide:text-[0.8125rem]">
+              <span className="hidden h-px w-8 shrink-0 bg-gold-soft/70 xs:block" aria-hidden="true" />
               Meenakari woodcraft · Since {settings.establishedYear}
+              <span className="hidden h-px w-8 shrink-0 bg-gold-soft/70 xs:block md:hidden" aria-hidden="true" />
             </p>
 
-            <h1 className="mt-5 text-[2.4rem] leading-[0.98] font-medium tracking-[-0.03em] text-ivory sm:mt-6 sm:text-5xl md:text-[3.4rem] lg:mt-5 lg:text-[3.125rem] laptop:mt-6 laptop:text-[4.25rem] wide:mt-8 wide:text-[5.25rem]">
+            <h1 className="mt-3 text-[1.875rem] leading-[1.02] font-medium tracking-[-0.03em] text-ivory sm:mt-6 sm:text-5xl md:text-[3.4rem] lg:mt-5 lg:text-[3.125rem] laptop:mt-6 laptop:text-[4.25rem] wide:mt-8 wide:text-[5.25rem]">
               Colour,
               <br />
               <span className="relative inline-block">
@@ -80,49 +81,52 @@ export function Hero({ settings, categories, featured, heroProducts = [] }: Prop
               by hand.
             </h1>
 
-            <p className="mt-5 max-w-lg text-[0.95rem] leading-relaxed text-ivory/70 sm:mt-6 sm:text-base lg:mt-5 lg:max-w-[32rem] laptop:max-w-[35rem] laptop:text-[1.0625rem] wide:mt-7 wide:max-w-[37rem] wide:text-lg">
+            <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-ivory/70 sm:mt-6 md:mx-0 sm:text-base lg:mt-5 lg:max-w-[32rem] laptop:max-w-[35rem] laptop:text-[1.0625rem] wide:mt-7 wide:max-w-[37rem] wide:text-lg">
               Meenakari chowkis, dry fruit boxes, pooja thalis and gift boxes, made in our Jasdan unit. Order any quantity, with wholesale prices for bulk.
             </p>
 
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap wide:mt-10">
+            <div className="mt-5 grid grid-cols-2 gap-2.5 sm:mt-7 sm:flex sm:flex-wrap sm:justify-center sm:gap-3 md:justify-start wide:mt-10">
               <Link
                 href={categories[0] ? `/${categories[0].slug}` : '/contact'}
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-gold-soft px-6 py-3 text-[0.95rem] font-semibold text-navy shadow-[0_10px_30px_-10px_rgb(193_162_95/0.7)] transition hover:-translate-y-0.5 hover:bg-[#cdb074] hover:shadow-[0_16px_36px_-12px_rgb(193_162_95/0.8)] sm:px-7 wide:py-3.5 wide:text-base"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-gold-soft px-3 py-2.5 text-sm font-semibold text-navy sm:px-6 sm:py-3 sm:text-[0.95rem] shadow-[0_10px_30px_-10px_rgb(193_162_95/0.7)] transition hover:-translate-y-0.5 hover:bg-[#cdb074] hover:shadow-[0_16px_36px_-12px_rgb(193_162_95/0.8)] sm:px-7 wide:py-3.5 wide:text-base"
               >
-                Explore the collection <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                <span className="sm:hidden">Shop now</span>
+                <span className="hidden sm:inline">Explore the collection</span>
+                <ArrowRight className="hidden size-4 transition-transform group-hover:translate-x-1 sm:block" />
               </Link>
               <WhatsAppButton
                 number={settings.whatsapp}
                 text={`Hi ${settings.businessName}, I'd like a quote for a bulk order.`}
-                className="py-3 text-[0.95rem] ring-1 ring-white/10 hover:-translate-y-0.5 sm:px-7 wide:py-3.5 wide:text-base"
+                className="px-3 py-2.5 text-sm ring-1 ring-white/10 hover:-translate-y-0.5 sm:px-7 sm:py-3 sm:text-[0.95rem] wide:py-3.5 wide:text-base"
               >
-                Get a bulk quote
+                <span className="sm:hidden">Get a quote</span>
+                <span className="hidden sm:inline">Get a bulk quote</span>
               </WhatsAppButton>
             </div>
 
             {/* Collections as an overlapping image stack: visual, one line of text */}
             {categories.length > 0 && (
-              <nav aria-label="Shop by collection" className="mt-7 flex items-center gap-4 wide:mt-10">
-                <ul className="flex -space-x-3">
+              <nav aria-label="Shop by collection" className="mt-7 hidden items-center justify-center gap-4 sm:flex md:justify-start wide:mt-10">
+                <ul className="flex -space-x-2.5 xs:-space-x-3">
                   {categories.map((c) => (
                     <li key={c._id} className="group/cat relative">
                       <Link
                         href={`/${c.slug}`}
                         aria-label={c.name}
-                        className="relative block size-11 overflow-hidden rounded-full bg-paper ring-2 ring-navy transition duration-300 group-hover/cat:z-10 group-hover/cat:-translate-y-1 group-hover/cat:ring-gold-soft sm:size-12 wide:size-14"
+                        className="relative block size-9 overflow-hidden rounded-full bg-paper ring-2 ring-navy xs:size-11 transition duration-300 group-hover/cat:z-10 group-hover/cat:-translate-y-1 group-hover/cat:ring-gold-soft sm:size-12 wide:size-14"
                       >
                         {c.image && <Image src={mediaUrl(c.image)} alt="" fill sizes="56px" className="object-cover" />}
                       </Link>
                       <span
                         aria-hidden="true"
-                        className="pointer-events-none absolute top-full left-1/2 z-20 mt-2 -translate-x-1/2 translate-y-1 rounded-md bg-ivory px-2 py-1 text-[0.7rem] font-medium whitespace-nowrap text-navy opacity-0 shadow-lg transition group-hover/cat:translate-y-0 group-hover/cat:opacity-100"
+                        className="pointer-events-none absolute top-full left-1/2 z-20 mt-2 -translate-x-1/2 translate-y-1 rounded-md bg-ivory px-2 py-1 text-xs font-medium whitespace-nowrap text-navy opacity-0 shadow-lg transition group-hover/cat:translate-y-0 group-hover/cat:opacity-100"
                       >
                         {c.name}
                       </span>
                     </li>
                   ))}
                 </ul>
-                <p className="text-sm leading-snug text-ivory/60">
+                <p className="shrink-0 text-[0.8125rem] leading-snug text-ivory/60 xs:text-sm">
                   <strong className="font-semibold text-ivory">{totalDesigns}+ designs</strong>
                   <br />
                   across {categories.length} collections
@@ -133,7 +137,7 @@ export function Hero({ settings, categories, featured, heroProducts = [] }: Prop
           </div>
 
           <HeroShowcase
-            className="w-full max-w-[20rem] sm:max-w-[23rem] md:max-w-none lg:max-w-[21.5rem] laptop:max-w-[25rem] wide:max-w-[31rem]"
+            className="w-full max-w-[16.5rem] xs:max-w-[18rem] sm:max-w-[23rem] md:max-w-none lg:max-w-[21.5rem] laptop:max-w-[25rem] wide:max-w-[31rem]"
             slides={slides}
             chips={{
               top: minPrice ? `From ${formatPrice(minPrice)}` : 'Wholesale prices',
@@ -158,12 +162,12 @@ export function Hero({ settings, categories, featured, heroProducts = [] }: Prop
                         tabIndex={copy === 1 ? -1 : undefined}
                         className="group/item flex items-center gap-2.5 rounded-full py-1 pr-4 pl-1 transition hover:bg-white/5 sm:gap-3"
                       >
-                        <span className="relative size-8 shrink-0 overflow-hidden rounded-full bg-paper ring-1 ring-gold-soft/30 transition group-hover/item:ring-gold-soft sm:size-9 wide:size-10">
+                        <span className="relative size-7 shrink-0 overflow-hidden rounded-full bg-paper ring-1 ring-gold-soft/30 transition group-hover/item:ring-gold-soft sm:size-9 wide:size-10">
                           <Image src={mediaUrl(img.url)} alt="" fill sizes="40px" className="object-cover" />
                         </span>
                         <span className="leading-tight whitespace-nowrap">
-                          <span className="block font-display text-sm text-ivory/90 italic group-hover/item:text-gold-soft sm:text-[0.95rem] wide:text-base">{p.name}</span>
-                          <span className="block text-[0.7rem] text-ivory/50">{p.priceFrom > 0 ? `From ${formatPrice(p.priceFrom)}` : 'Price on request'}</span>
+                          <span className="block font-display text-[0.8125rem] text-ivory/90 italic group-hover/item:text-gold-soft sm:text-[0.95rem] wide:text-base">{p.name}</span>
+                          <span className="block text-[0.6875rem] text-ivory/50 sm:text-xs">{p.priceFrom > 0 ? `From ${formatPrice(p.priceFrom)}` : 'Price on request'}</span>
                         </span>
                       </Link>
                       <span className="px-3 text-sm text-gold-soft/60 sm:px-4" aria-hidden="true">✦</span>

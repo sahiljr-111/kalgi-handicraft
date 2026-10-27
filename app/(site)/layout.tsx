@@ -2,6 +2,7 @@ import Script from 'next/script';
 import { Footer } from '@/components/site/Footer';
 import { Header } from '@/components/site/Header';
 import { JsonLd } from '@/components/site/JsonLd';
+import { MobileTabBar } from '@/components/site/MobileTabBar';
 import { WhatsAppFab } from '@/components/site/WhatsAppButton';
 import { getCategories, getGallery, getSettings } from '@/lib/api';
 import { localBusinessSchema, websiteSchema } from '@/lib/seo';
@@ -20,7 +21,10 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
       <Header businessName={settings.businessName} phone={settings.phone} categories={nav} showGallery={gallery.length > 0} />
       <main id="main">{children}</main>
       <Footer settings={settings} categories={nav} showGallery={gallery.length > 0} />
+      {/* Phones: room for the bottom tab bar / product action bar. */}
+      <div aria-hidden="true" className="h-[calc(4rem+env(safe-area-inset-bottom))] bg-navy sm:hidden" />
       <WhatsAppFab number={settings.whatsapp} businessName={settings.businessName} />
+      <MobileTabBar categories={nav} whatsapp={settings.whatsapp} businessName={settings.businessName} />
       <JsonLd data={localBusinessSchema(settings)} />
       <JsonLd data={websiteSchema(settings)} />
       {GA_ID && (

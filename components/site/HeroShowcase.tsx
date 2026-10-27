@@ -148,7 +148,7 @@ export function HeroShowcase({ slides, chips, className }: Props) {
 
   return (
     <div
-      className={cn('relative mx-auto aspect-[10/11]', className)}
+      className={cn('relative mx-auto aspect-[5/6] sm:aspect-[10/11]', className)}
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
       onFocus={() => setHovering(true)}
@@ -195,10 +195,10 @@ export function HeroShowcase({ slides, chips, className }: Props) {
         </div>
 
         <div className="pointer-events-none absolute inset-0">
-          <span className="absolute top-[3%] left-[4%] animate-float rounded-full bg-ivory/95 px-2.5 py-1 text-[0.7rem] font-semibold text-navy shadow-lg sm:px-3 sm:py-1.5 sm:text-xs">
+          <span className="absolute top-[3%] left-[4%] animate-float rounded-full bg-ivory/95 px-2.5 py-1 text-xs font-semibold text-navy shadow-lg sm:px-3 sm:py-1.5 sm:text-xs">
             {chips.top}
           </span>
-          <span className="absolute right-[3%] bottom-[10%] animate-float rounded-full bg-gold-soft px-2.5 py-1 text-[0.7rem] font-semibold text-navy shadow-lg [animation-delay:-3s] sm:px-3 sm:py-1.5 sm:text-xs">
+          <span className="absolute right-[3%] bottom-[10%] animate-float rounded-full bg-gold-soft px-2.5 py-1 text-xs font-semibold text-navy shadow-lg [animation-delay:-3s] sm:px-3 sm:py-1.5 sm:text-xs">
             {chips.side}
           </span>
         </div>
@@ -206,7 +206,7 @@ export function HeroShowcase({ slides, chips, className }: Props) {
 
       {/* Caption: names the product in the main frame */}
       <div className="absolute inset-x-0 bottom-0 flex h-[30%] flex-col items-center justify-end text-center">
-        <p className="text-[0.65rem] font-semibold tracking-[0.2em] text-gold-soft uppercase" aria-live={paused || hovering ? 'polite' : 'off'}>
+        <p className="text-xs font-semibold tracking-[0.16em] text-gold-soft uppercase" aria-live={paused || hovering ? 'polite' : 'off'}>
           {main.label}
         </p>
         <Link
@@ -219,7 +219,7 @@ export function HeroShowcase({ slides, chips, className }: Props) {
         <p className="mt-1 text-xs text-ivory/55 sm:text-[0.8125rem]">{main.meta}</p>
 
         {n > 1 && (
-          <div className="mt-3 flex w-full max-w-[15rem] items-center gap-2">
+          <div className="mt-2 flex w-full max-w-[15rem] items-center gap-2 xs:mt-3">
             <div className="flex flex-1 gap-1" role="group" aria-label="Choose a product">
               {slides.map((s, i) => (
                 <button
@@ -228,7 +228,7 @@ export function HeroShowcase({ slides, chips, className }: Props) {
                   onClick={() => setIndex(i)}
                   aria-label={`Show ${s.name}`}
                   aria-current={i === index || undefined}
-                  className="group/dot relative h-4 flex-1"
+                  className="group/dot relative h-6 flex-1"
                 >
                   <span
                     className={cn(
@@ -244,7 +244,7 @@ export function HeroShowcase({ slides, chips, className }: Props) {
                 type="button"
                 onClick={() => setPaused((p) => !p)}
                 aria-label={paused ? 'Play slideshow' : 'Pause slideshow'}
-                className="grid size-6 place-items-center rounded-full text-ivory/55 transition hover:bg-white/10 hover:text-ivory"
+                className="grid size-7 place-items-center rounded-full text-ivory/55 transition hover:bg-white/10 hover:text-ivory"
               >
                 {paused ? <Play className="size-3" /> : <Pause className="size-3" />}
               </button>

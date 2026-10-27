@@ -3,6 +3,7 @@
 import { Loader2, Send } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useId, useState } from 'react';
+import { Select } from '@/components/ui/select';
 import { ApiError, api } from '@/lib/client';
 import { cn } from '@/lib/utils';
 
@@ -128,17 +129,14 @@ export function InquiryForm({ productId, productName, compact = false, products 
       {products && (
         <div>
           <label htmlFor={`${uid}-product`} className="mb-1.5 block text-sm font-medium text-ink-soft">Product (optional)</label>
-          <select
+          <Select
             id={`${uid}-product`}
+            variant="site"
             value={values.product}
-            onChange={set('product')}
-            className="w-full rounded-xl border border-line bg-white/70 px-4 py-3 text-ink outline-none focus:border-navy focus:ring-3 focus:ring-navy/15"
-          >
-            <option value="">General inquiry</option>
-            {products.map((p) => (
-              <option key={p._id} value={p._id}>{p.name}</option>
-            ))}
-          </select>
+            onChange={(e) => setValues((v) => ({ ...v, product: e.target.value }))}
+            options={[{ value: '', label: 'General inquiry' }, ...products.map((p) => ({ value: p._id, label: p.name }))]}
+            className="h-12 rounded-xl bg-white/70 text-base text-ink sm:text-sm"
+          />
         </div>
       )}
 

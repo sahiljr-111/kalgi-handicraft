@@ -89,7 +89,7 @@ export default async function BlogPostPage({ params }: Props) {
   const TopicIcon = topicIcon(post.topic);
 
   return (
-    <article className="site-container py-6 lg:py-10">
+    <article className="site-container py-3 sm:py-6 lg:py-10">
       {preview && !live && (
         <p className="mb-6 rounded-xl border border-gold-soft bg-gold-soft/15 px-4 py-3 text-sm text-ink">
           Preview: this blog is {post.status === 'draft' ? 'a draft' : `scheduled for ${formatDate(post.publishedAt!)}`} and is not visible to visitors yet.
@@ -107,9 +107,9 @@ export default async function BlogPostPage({ params }: Props) {
             ]}
           />
 
-          <header className="mt-5">
-            <h1 className="text-[1.65rem] leading-[1.2] text-ink sm:text-[2rem] lg:text-[2.25rem]">{post.title}</h1>
-            <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.8125rem] text-muted">
+          <header className="mt-3 sm:mt-5">
+            <h1 className="text-[1.375rem] leading-snug text-ink sm:text-[2rem] sm:leading-[1.2] lg:text-[2.25rem]">{post.title}</h1>
+            <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs text-muted sm:mt-4 sm:gap-x-4 sm:gap-y-2 sm:text-[0.8125rem]">
               {post.publishedAt && (
                 <span className="inline-flex items-center gap-1.5">
                   <CalendarDays className="size-4" aria-hidden="true" />
@@ -128,7 +128,7 @@ export default async function BlogPostPage({ params }: Props) {
           </header>
 
           {post.featuredImage && (
-            <div className="relative mt-6 h-52 overflow-hidden rounded-2xl bg-paper sm:h-72 lg:h-[19rem]">
+            <div className="relative mt-4 h-48 overflow-hidden rounded-xl bg-paper max-sm:-mx-4 max-sm:rounded-none sm:mt-6 sm:h-72 sm:rounded-2xl lg:h-[19rem]">
               <Image
                 src={mediaUrl(post.featuredImage)}
                 alt={post.featuredImageAlt || ''}
@@ -140,11 +140,11 @@ export default async function BlogPostPage({ params }: Props) {
             </div>
           )}
 
-          {post.excerpt && <p className="mt-6 text-[1.0625rem] leading-relaxed text-ink-soft">{post.excerpt}</p>}
+          {post.excerpt && <p className="mt-4 text-[0.9375rem] leading-relaxed text-ink-soft sm:mt-6 sm:text-[1.0625rem]">{post.excerpt}</p>}
 
           {/* On phones and tablets the contents list sits above the text, closed. */}
           {toc.length >= 3 && (
-            <details className="mt-6 rounded-2xl border border-line bg-white/70 px-5 py-3.5 lg:hidden">
+            <details className="mt-4 rounded-xl border border-line bg-white/70 px-4 py-3 sm:mt-6 sm:rounded-2xl sm:px-5 sm:py-3.5 lg:hidden">
               <summary className="cursor-pointer text-sm font-semibold text-ink">In this blog ({toc.length} sections)</summary>
               <div className="mt-3">
                 <BlogToc items={toc} />
@@ -153,7 +153,7 @@ export default async function BlogPostPage({ params }: Props) {
           )}
 
           {/* Content is sanitised when it is saved. */}
-          <div className="prose-kalgi mt-8" dangerouslySetInnerHTML={{ __html: html }} />
+          <div className="prose-kalgi mt-5 sm:mt-8" dangerouslySetInnerHTML={{ __html: html }} />
 
           <footer className="mt-10 border-t border-line pt-5">
             <div className="flex flex-wrap items-center justify-between gap-4">
@@ -179,9 +179,9 @@ export default async function BlogPostPage({ params }: Props) {
             )}
           </footer>
 
-          <aside className="mt-10 rounded-2xl bg-navy p-6 text-ivory sm:flex sm:items-center sm:justify-between sm:gap-6 sm:p-7">
+          <aside className="mt-8 rounded-2xl bg-navy p-4 text-ivory sm:flex sm:items-center sm:justify-between sm:gap-6 sm:p-7">
             <div>
-              <p className="font-display text-xl">{cat ? `Looking for ${cat.name.toLowerCase()}?` : 'Have a requirement in mind?'}</p>
+              <p className="font-display text-lg sm:text-xl">{cat ? `Looking for ${cat.name.toLowerCase()}?` : 'Have a requirement in mind?'}</p>
               <p className="mt-1.5 text-sm text-ivory/75">Order any quantity. Send the product and quantity on WhatsApp for prices and photos.</p>
             </div>
             <div className="mt-5 flex shrink-0 flex-col gap-3 sm:mt-0">
@@ -265,9 +265,9 @@ export default async function BlogPostPage({ params }: Props) {
       </div>
 
       {post.related?.length > 0 && (
-        <section className="mt-16 border-t border-line pt-10">
-          <h2 className="text-2xl text-ink sm:text-[1.75rem]">Related blogs</h2>
-          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <section className="mt-10 border-t border-line pt-6 sm:mt-16 sm:pt-10">
+          <h2 className="text-lg text-ink sm:text-[1.75rem]">Related blogs</h2>
+          <div className="mt-4 grid grid-cols-2 gap-3 sm:mt-6 sm:gap-5 lg:grid-cols-3">
             {post.related.map((p) => <PostCard key={p._id} post={p} />)}
           </div>
         </section>

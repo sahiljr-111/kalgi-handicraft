@@ -35,10 +35,10 @@ export default async function AboutPage() {
 
   return (
     <>
-      <section className="site-container grid items-center gap-12 py-14 lg:grid-cols-2 lg:gap-20 lg:py-20">
+      <section className="site-container grid items-center gap-8 py-5 sm:gap-12 sm:py-14 lg:grid-cols-2 lg:gap-20 lg:py-20">
         <div>
           <SectionHeading as="h1" eyebrow="About us" title={<>Meenakari woodcraft from <em className="text-navy">{town}</em></>} />
-          <div className="prose-kalgi mt-8">
+          <div className="prose-kalgi mt-4 sm:mt-8">
             <p>
               {s.businessName} is a manufacturer in {town}, in the Rajkot district of Gujarat. We started in {s.establishedYear}, which makes this
               our {years}th year of making Meenakari products.
@@ -52,26 +52,26 @@ export default async function AboutPage() {
               Buyers have ordered from us from cities including {BUYER_CITIES.slice(0, -1).join(', ')} and {BUYER_CITIES[BUYER_CITIES.length - 1]}.
             </p>
           </div>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link href="/contact" className="inline-flex items-center justify-center rounded-full bg-navy px-7 py-3.5 font-semibold text-ivory hover:bg-navy-deep">Contact us</Link>
+          <div className="mt-5 grid grid-cols-2 gap-2.5 sm:mt-8 sm:flex sm:gap-3">
+            <Link href="/contact" className="inline-flex items-center justify-center rounded-full bg-navy px-4 py-2.5 text-sm font-semibold text-ivory hover:bg-navy-deep sm:px-7 sm:py-3.5 sm:text-base">Contact us</Link>
             {categories[0] && (
-              <Link href={`/${categories[0].slug}`} className="inline-flex items-center justify-center rounded-full border border-ink/20 px-7 py-3.5 font-semibold text-ink hover:border-navy">
-                See our products
+              <Link href={`/${categories[0].slug}`} className="inline-flex items-center justify-center rounded-full border border-ink/20 px-4 py-2.5 text-sm font-semibold text-ink hover:border-navy sm:px-7 sm:py-3.5 sm:text-base">
+                <span className="sm:hidden">Products</span><span className="hidden sm:inline">See our products</span>
               </Link>
             )}
           </div>
         </div>
-        <div className="arch arch-ring relative aspect-[4/5] bg-paper shadow-lift">
+        <div className="arch arch-ring relative mx-auto aspect-[4/5] w-full max-w-[20rem] bg-paper shadow-lift sm:max-w-sm lg:max-w-none">
           {s.aboutImage && <Image src={mediaUrl(s.aboutImage)} alt={`Meenakari work by ${s.businessName}`} fill priority sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />}
         </div>
       </section>
 
       <section className="border-y border-line bg-paper">
-        <div className="site-container py-14">
-          <h2 className="text-2xl text-ink sm:text-3xl">Company facts</h2>
-          <dl className="mt-8 grid gap-x-10 sm:grid-cols-2">
+        <div className="site-container py-8 sm:py-14">
+          <h2 className="text-lg text-ink sm:text-3xl">Company facts</h2>
+          <dl className="mt-3 grid gap-x-10 sm:grid-cols-2">
             {facts.map(([k, v]) => (
-              <div key={k} className="grid grid-cols-[9rem_1fr] gap-4 border-b border-line py-3.5 text-sm sm:text-base">
+              <div key={k} className="grid grid-cols-[6.5rem_1fr] gap-3 border-b border-line py-3.5 text-sm xs:grid-cols-[8rem_1fr] sm:grid-cols-[9rem_1fr] sm:gap-4 sm:text-base">
                 <dt className="text-muted">{k}</dt>
                 <dd className="font-medium text-ink">{v}</dd>
               </div>
@@ -90,12 +90,12 @@ export default async function AboutPage() {
       </section>
 
       {categories.length > 0 && (
-        <section className="site-container py-16 sm:py-20">
-          <h2 className="text-2xl text-ink sm:text-3xl">What we make</h2>
-          <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <section className="site-container py-8 sm:py-20">
+          <h2 className="text-lg text-ink sm:text-3xl">What we make</h2>
+          <ul className="mt-4 grid gap-2.5 sm:mt-8 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {categories.map((c) => (
               <li key={c._id}>
-                <Link href={`/${c.slug}`} className="flex items-center justify-between rounded-2xl border border-line bg-white/50 px-5 py-4 transition hover:border-navy">
+                <Link href={`/${c.slug}`} className="flex items-center justify-between rounded-xl border border-line bg-white/50 px-4 py-3 text-sm transition hover:border-navy sm:rounded-2xl sm:px-5 sm:py-4 sm:text-base">
                   <span className="font-medium text-ink">{c.name}</span>
                   <span className="text-sm text-muted">{c.productCount ?? 0} designs</span>
                 </Link>

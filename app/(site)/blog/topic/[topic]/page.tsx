@@ -36,18 +36,18 @@ export default async function BlogTopicPage({ params, searchParams }: Props) {
   if (!items.length) notFound();
   const path = `/blog/topic/${topic.slug}`;
   return (
-    <section className="site-container py-8 lg:py-12">
+    <section className="site-container py-4 sm:py-8 lg:py-12">
       <Breadcrumbs items={[{ name: 'Blogs', href: '/blog' }, { name: topic.name, href: path }]} />
-      <div className="mt-5 max-w-2xl">
-        <h1 className="text-[1.9rem] leading-tight text-ink sm:text-4xl">{topic.name}</h1>
-        <p className="mt-2 text-[0.95rem] text-muted sm:text-base">
+      <div className="mt-3 max-w-2xl sm:mt-5">
+        <h1 className="text-[1.5rem] leading-tight text-ink sm:text-4xl">{topic.name}</h1>
+        <p className="mt-1 text-sm text-muted sm:mt-2 sm:text-base">
           {topic.count} {topic.count === 1 ? 'blog' : 'blogs'} on this topic.
         </p>
       </div>
-      <div className="mt-8">
+      <div className="mt-4 sm:mt-8">
         <BlogFilterBar topics={topics} active={topic.slug} />
       </div>
-      <div className="mt-6">
+      <div className="mt-4 sm:mt-6">
         <PostGrid posts={items} />
       </div>
       <Pagination basePath={path} page={page} pages={pages} />

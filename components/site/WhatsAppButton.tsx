@@ -78,7 +78,7 @@ export function WhatsAppFab({ number, businessName }: { number: string; business
       aria-hidden={!visible || undefined}
       tabIndex={visible ? undefined : -1}
       className={cn(
-        'group fixed right-4 bottom-4 z-40 flex items-center gap-2 rounded-full bg-whatsapp p-3.5 text-white shadow-lift transition duration-300 ease-out hover:bg-[#0b6534] sm:right-6 sm:bottom-6 sm:pr-5',
+        'group fixed right-4 bottom-4 z-40 flex items-center max-sm:hidden gap-2 rounded-full bg-whatsapp p-3.5 text-white shadow-lift transition duration-300 ease-out hover:bg-[#0b6534] sm:right-6 sm:bottom-6 sm:pr-5',
         visible ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-4 opacity-0',
       )}
     >

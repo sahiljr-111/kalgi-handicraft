@@ -33,22 +33,22 @@ export default async function BlogPage({ searchParams }: Props) {
   const [featured, ...rest] = !q && page === 1 ? items : [null, ...items];
 
   return (
-    <section className="site-container py-8 lg:py-12">
+    <section className="site-container py-4 sm:py-8 lg:py-12">
       <Breadcrumbs items={[{ name: 'Blogs', href: '/blog' }]} />
-      <div className="mt-5 max-w-2xl">
-        <h1 className="text-[1.9rem] leading-tight text-ink sm:text-4xl">Blogs</h1>
-        <p className="mt-2 text-[0.95rem] text-muted sm:text-base">
+      <div className="mt-3 max-w-2xl sm:mt-5">
+        <h1 className="text-[1.5rem] leading-tight text-ink sm:text-4xl">Blogs</h1>
+        <p className="mt-1 text-sm text-muted sm:mt-2 sm:text-base">
           Simple guides on Meenakari work, choosing a chowki or thali, gifting with dry fruit boxes and buying in bulk.
         </p>
       </div>
 
       {featured && (
-        <div className="mt-8">
+        <div className="mt-4 sm:mt-8">
           <FeaturedPost post={featured} />
         </div>
       )}
 
-      <div className="mt-8">
+      <div className="mt-4 sm:mt-8">
         <BlogFilterBar topics={topics} q={q} />
       </div>
 
@@ -58,7 +58,7 @@ export default async function BlogPage({ searchParams }: Props) {
         </p>
       )}
 
-      <div className="mt-6">
+      <div className="mt-4 sm:mt-6">
         <PostGrid posts={rest as typeof items} empty={q ? 'No blogs match your search. Try another word.' : undefined} />
       </div>
       <Pagination basePath="/blog" page={page} pages={pages} q={q} />

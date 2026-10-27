@@ -63,15 +63,15 @@ export default async function CategoryPage({ params }: Props) {
     <>
       <section className="relative isolate overflow-hidden border-b border-line bg-paper">
         <div aria-hidden="true" className="pattern-buta absolute inset-0 -z-10 [mask-image:linear-gradient(to_left,black,transparent_70%)]" />
-        <div className="site-container grid items-center gap-8 py-8 sm:py-10 md:grid-cols-[1fr_auto] lg:py-14">
+        <div className="site-container grid items-center gap-8 py-5 sm:py-10 md:grid-cols-[1fr_auto] lg:py-14">
           <div>
             <Breadcrumbs items={[{ name: category.name, href: `/${category.slug}` }]} />
-            <h1 className="mt-4 text-[2rem] leading-tight text-ink sm:mt-5 sm:text-4xl lg:text-5xl">{category.name}</h1>
-            {category.tagline && <p className="mt-3 max-w-2xl text-base text-muted sm:mt-4 sm:text-lg">{category.tagline}</p>}
+            <h1 className="mt-3 text-[1.5rem] leading-tight text-ink sm:mt-5 sm:text-4xl lg:text-5xl">{category.name}</h1>
+            {category.tagline && <p className="mt-1.5 max-w-2xl text-sm text-muted sm:mt-4 sm:text-lg">{category.tagline}</p>}
             {facts.length > 0 && (
-              <dl className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+              <dl className="m-rail mt-4 flex gap-2 text-xs sm:mt-5 sm:flex-wrap sm:gap-x-6 sm:gap-y-2 sm:text-sm">
                 {facts.map(([k, v]) => (
-                  <div key={k} className="flex gap-1.5">
+                  <div key={k} className="flex gap-1.5 rounded-full border border-line bg-ivory px-3 py-1.5 whitespace-nowrap sm:rounded-none sm:border-0 sm:bg-transparent sm:p-0 sm:whitespace-normal">
                     <dt className="text-muted">{k}:</dt>
                     <dd className="font-medium text-ink">{v}</dd>
                   </div>

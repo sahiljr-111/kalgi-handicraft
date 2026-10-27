@@ -46,8 +46,8 @@ export function Header({ phone, categories, showGallery = false }: Props) {
     <header data-dark className={cn('sticky top-0 z-50 transition-shadow', scrolled && 'shadow-[0_10px_30px_-18px_rgb(0_0_0/0.6)]')}>
       <div className="meena-band" />
       <div className="border-b border-white/10 bg-navy">
-        <div className="site-container flex h-16 items-center justify-between gap-4 sm:h-[4.5rem]">
-          <Logo onDark priority className="h-10 sm:h-12" />
+        <div className="site-container flex h-14 items-center justify-between gap-4 sm:h-[4.5rem]">
+          <Logo onDark priority className="h-9 sm:h-12" />
 
           <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
             <Link
@@ -102,7 +102,7 @@ export function Header({ phone, categories, showGallery = false }: Props) {
             )}
             <button
               onClick={() => setOpen((o) => !o)}
-              className="grid size-11 place-items-center rounded-full text-ivory hover:bg-white/10 lg:hidden"
+              className="grid size-10 place-items-center rounded-full text-ivory hover:bg-white/10 sm:size-11 lg:hidden"
               aria-expanded={open}
               aria-controls="mobile-nav"
               aria-label={open ? 'Close menu' : 'Open menu'}
@@ -114,8 +114,8 @@ export function Header({ phone, categories, showGallery = false }: Props) {
       </div>
 
       {open && (
-        <div id="mobile-nav" className="fixed inset-x-0 top-[calc(4rem+12px)] bottom-0 overflow-y-auto bg-navy-deep lg:hidden">
-          <nav aria-label="Mobile" className="px-4 py-6">
+        <div id="mobile-nav" className="fixed inset-x-0 top-[calc(3.5rem+12px)] bottom-0 overflow-y-auto bg-navy-deep sm:top-[calc(4.5rem+12px)] lg:hidden">
+          <nav aria-label="Mobile" className="px-4 pt-4 pb-[calc(5rem+env(safe-area-inset-bottom))] sm:py-6">
             <Link href="/" aria-current={pathname === '/' ? 'page' : undefined} className="mb-4 block rounded-xl px-3 py-3 text-lg text-ivory/75 hover:bg-white/5">
               Home
             </Link>

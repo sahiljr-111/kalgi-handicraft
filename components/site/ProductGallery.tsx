@@ -36,8 +36,8 @@ export function ProductGallery({ images, name }: { images: ProductImage[]; name:
   }
 
   return (
-    <div className="grid gap-4 lg:grid-cols-[84px_1fr] lg:gap-5">
-      <div className="order-2 flex gap-3 overflow-x-auto pb-1 lg:order-1 lg:flex-col" role="tablist" aria-label="Product photos">
+    <div className="grid gap-2.5 sm:gap-4 lg:grid-cols-[84px_1fr] lg:gap-5">
+      <div className="order-2 flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] sm:gap-3 lg:order-1 lg:flex-col" role="tablist" aria-label="Product photos">
         {images.map((img, i) => (
           <button
             key={img.url}
@@ -46,7 +46,7 @@ export function ProductGallery({ images, name }: { images: ProductImage[]; name:
             aria-label={`Show photo ${i + 1}`}
             onClick={() => setIndex(i)}
             className={cn(
-              'relative aspect-square w-20 shrink-0 overflow-hidden rounded-xl border-2 bg-paper transition lg:w-full',
+              'relative aspect-square w-14 shrink-0 overflow-hidden rounded-lg border-2 bg-paper transition sm:w-20 sm:rounded-xl lg:w-full',
               i === index ? 'border-navy' : 'border-transparent opacity-70 hover:opacity-100',
             )}
           >
@@ -55,7 +55,7 @@ export function ProductGallery({ images, name }: { images: ProductImage[]; name:
         ))}
       </div>
 
-      <div className="order-1 lg:order-2">
+      <div className="order-1 max-sm:-mx-4 lg:order-2">
         <button
           type="button"
           onClick={() => setLightbox(true)}
@@ -64,7 +64,7 @@ export function ProductGallery({ images, name }: { images: ProductImage[]; name:
             setLens({ x: ((e.clientX - r.left) / r.width) * 100, y: ((e.clientY - r.top) / r.height) * 100 });
           }}
           onMouseLeave={() => setLens(null)}
-          className="group relative block aspect-square w-full cursor-zoom-in overflow-hidden rounded-3xl bg-paper"
+          className="group relative block aspect-square w-full cursor-zoom-in overflow-hidden bg-paper sm:rounded-3xl"
         >
           <Image
             src={mediaUrl(current.url)}
@@ -75,7 +75,12 @@ export function ProductGallery({ images, name }: { images: ProductImage[]; name:
             className="object-cover transition-transform duration-200 ease-out"
             style={lens ? { transform: 'scale(1.9)', transformOrigin: `${lens.x}% ${lens.y}%` } : undefined}
           />
-          <span className="pointer-events-none absolute right-4 bottom-4 flex items-center gap-1.5 rounded-full bg-ink/70 px-3 py-1.5 text-xs font-medium text-ivory opacity-0 backdrop-blur transition group-hover:opacity-100 max-lg:opacity-100">
+          {images.length > 1 && (
+            <span className="pointer-events-none absolute bottom-3 left-3 rounded-full bg-ink/70 px-2.5 py-1 text-xs font-medium text-ivory backdrop-blur sm:hidden">
+              {index + 1}/{images.length}
+            </span>
+          )}
+          <span className="pointer-events-none absolute right-3 bottom-3 flex items-center gap-1.5 rounded-full bg-ink/70 px-2.5 py-1 text-xs font-medium text-ivory opacity-0 backdrop-blur transition group-hover:opacity-100 max-lg:opacity-100 sm:right-4 sm:bottom-4 sm:px-3 sm:py-1.5">
             <ZoomIn className="size-3.5" /> <span className="hidden lg:inline">Hover to zoom · click to expand</span><span className="lg:hidden">Tap to expand</span>
           </span>
         </button>

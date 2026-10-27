@@ -4,6 +4,7 @@ import { SlidersHorizontal, X } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import type { Product } from '@/lib/types';
 import { cn, formatPrice } from '@/lib/utils';
+import { Select } from '@/components/ui/select';
 import { ProductCard } from './ProductCard';
 
 const PAGE_SIZE = 12;
@@ -160,31 +161,31 @@ export function CategoryBrowser({ products }: { products: Product[] }) {
 
       <div>
         <h2 className="sr-only">Products</h2>
-        <div className="mb-6 flex items-center justify-between gap-3 border-b border-line pb-4">
+        {/* Phones: count on its own line, Filters + Sort share the row below. */}
+        <div className="mb-6 flex flex-col gap-3 border-b border-line pb-4 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-muted" aria-live="polite">
             <span className="font-semibold text-ink">{results.length}</span> {results.length === 1 ? 'product' : 'products'}
           </p>
           <div className="flex items-center gap-2">
-            <button onClick={() => setPanelOpen(true)} className="flex items-center gap-2 rounded-full border border-line px-4 py-2 text-sm lg:hidden">
+            <button onClick={() => setPanelOpen(true)} className="flex h-10 flex-1 items-center justify-center gap-2 rounded-full border border-line px-4 text-sm sm:flex-none lg:hidden">
               <SlidersHorizontal className="size-4" /> Filters{activeCount ? ` (${activeCount})` : ''}
             </button>
-            <label className="sr-only" htmlFor="sort">Sort by</label>
-            <select
-              id="sort"
-              value={sort}
-              onChange={(e) => setSort(e.target.value as Sort)}
-              className="rounded-full border border-line bg-white/60 px-4 py-2 text-sm text-ink-soft outline-none focus:border-navy"
-            >
-              {SORTS.map((s) => (
-                <option key={s.value} value={s.value}>{s.label}</option>
-              ))}
-            </select>
+            <div className="min-w-0 flex-1 sm:w-52 sm:flex-none">
+              <Select
+                id="sort"
+                variant="site"
+                aria-label="Sort by"
+                value={sort}
+                onChange={(e) => setSort(e.target.value as Sort)}
+                options={SORTS.map((s) => ({ value: s.value, label: s.label }))}
+              />
+            </div>
           </div>
         </div>
 
         {results.length ? (
           <>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:grid-cols-3">
+            <div className="grid grid-cols-2 gap-x-3 gap-y-8 xs:gap-x-4 sm:gap-x-6 sm:gap-y-10 md:grid-cols-3">
               {/* Every product stays in the HTML so search engines can reach it; "Show more" only reveals them. */}
               {results.map((p, i) => (
                 <div key={p._id} className={cn(i >= shown && 'hidden')}>

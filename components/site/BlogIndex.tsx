@@ -31,15 +31,15 @@ export function PostCard({ post, priority = false, headingLevel = 'h3' }: { post
           />
         )}
       </div>
-      <div className="flex flex-1 flex-col p-4">
-        {post.topic && <p className="text-[0.7rem] font-semibold tracking-[0.12em] text-gold uppercase">{post.topic}</p>}
-        <Heading className="mt-1.5 line-clamp-2 font-display text-[1.05rem] leading-snug text-ink group-hover:text-gold">
+      <div className="flex flex-1 flex-col p-3 sm:p-4">
+        {post.topic && <p className="text-[0.6875rem] font-semibold tracking-[0.1em] text-gold uppercase sm:text-xs">{post.topic}</p>}
+        <Heading className="mt-1 line-clamp-2 font-sans text-sm leading-snug font-medium text-ink group-hover:text-gold sm:mt-1.5 sm:font-display sm:text-[1.05rem] sm:font-normal">
           <Link href={`/blog/${post.slug}`} className="after:absolute after:inset-0">
             {post.title}
           </Link>
         </Heading>
         {post.publishedAt && (
-          <p className="mt-auto flex items-center gap-1.5 pt-3 text-xs text-muted">
+          <p className="mt-auto flex items-center gap-1.5 pt-2 text-[0.6875rem] text-muted sm:pt-3 sm:text-xs">
             <CalendarDays className="size-3.5" aria-hidden="true" />
             <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
           </p>
@@ -52,24 +52,24 @@ export function PostCard({ post, priority = false, headingLevel = 'h3' }: { post
 /** The newest post, shown large at the top of the first page. */
 export function FeaturedPost({ post }: { post: BlogPost }) {
   return (
-    <article className="group relative grid items-center gap-6 overflow-hidden rounded-3xl border border-line bg-white/70 p-4 sm:p-5 md:grid-cols-[1fr_1.05fr] md:gap-10 md:p-6">
+    <article className="group relative grid items-center gap-3 overflow-hidden rounded-2xl border border-line bg-white/70 p-3 sm:gap-6 sm:rounded-3xl sm:p-5 md:grid-cols-[1fr_1.05fr] md:gap-10 md:p-6">
       <div className="order-2 md:order-1 md:pl-2">
         <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted">
           <span className="rounded-full bg-paper px-2.5 py-1 font-semibold tracking-wide text-gold uppercase">Latest</span>
           {post.topic && <span className="font-semibold tracking-wide text-ink-soft uppercase">{post.topic}</span>}
           {post.publishedAt && <time dateTime={post.publishedAt}>· {formatDate(post.publishedAt)}</time>}
         </p>
-        <h2 className="mt-3 font-display text-[1.45rem] leading-tight text-ink sm:text-[1.75rem]">
+        <h2 className="mt-2 font-display text-[1.125rem] leading-snug text-ink sm:mt-3 sm:text-[1.75rem] sm:leading-tight">
           <Link href={`/blog/${post.slug}`} className="after:absolute after:inset-0 group-hover:text-gold">
             {post.title}
           </Link>
         </h2>
-        <p className="mt-3 line-clamp-3 text-[0.95rem] leading-relaxed text-muted">{post.excerpt}</p>
-        <span className="mt-5 inline-flex items-center gap-2 rounded-full bg-navy px-5 py-2.5 text-sm font-semibold text-ivory transition group-hover:bg-navy-deep">
+        <p className="mt-1.5 line-clamp-2 text-[0.8125rem] leading-relaxed text-muted sm:mt-3 sm:line-clamp-3 sm:text-[0.95rem]">{post.excerpt}</p>
+        <span className="mt-3 inline-flex items-center gap-2 rounded-full bg-navy px-4 py-2 text-[0.8125rem] font-semibold text-ivory transition group-hover:bg-navy-deep sm:mt-5 sm:px-5 sm:py-2.5 sm:text-sm">
           Read the blog <ArrowRight className="size-4" />
         </span>
       </div>
-      <div className="relative order-1 aspect-[16/10] overflow-hidden rounded-2xl bg-paper md:order-2">
+      <div className="relative order-1 aspect-[16/9] overflow-hidden rounded-xl bg-paper sm:aspect-[16/10] sm:rounded-2xl md:order-2">
         {post.featuredImage && (
           <Image
             src={mediaUrl(post.featuredImage)}
@@ -89,7 +89,7 @@ export function FeaturedPost({ post }: { post: BlogPost }) {
 export function BlogFilterBar({ topics, active, q = '' }: { topics: BlogTopic[]; active?: string; q?: string }) {
   const chip = (on: boolean) =>
     cn(
-      'inline-flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-1.5 text-sm transition',
+      'inline-flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-2 text-sm transition',
       on ? 'bg-navy text-ivory' : 'text-ink-soft hover:bg-paper hover:text-ink',
     );
   return (
@@ -117,7 +117,7 @@ export function BlogFilterBar({ topics, active, q = '' }: { topics: BlogTopic[];
           placeholder="Search blogs"
           className="h-10 w-full rounded-full border border-line bg-ivory pr-10 pl-4 text-sm text-ink outline-none placeholder:text-muted focus:border-navy"
         />
-        <button type="submit" aria-label="Search" className="absolute top-1/2 right-1.5 grid size-7 -translate-y-1/2 place-items-center rounded-full text-muted hover:text-ink">
+        <button type="submit" aria-label="Search" className="absolute top-1/2 right-0.5 grid size-9 -translate-y-1/2 place-items-center rounded-full text-muted hover:text-ink">
           <Search className="size-4" />
         </button>
       </form>
@@ -128,7 +128,7 @@ export function BlogFilterBar({ topics, active, q = '' }: { topics: BlogTopic[];
 export function PostGrid({ posts, empty = 'New blogs are on the way. Please check back soon.' }: { posts: BlogPost[]; empty?: string }) {
   if (!posts.length) return <p className="rounded-2xl border border-dashed border-line px-6 py-14 text-center text-muted">{empty}</p>;
   return (
-    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4">
       {posts.map((p, i) => <PostCard key={p._id} post={p} priority={i < 4} headingLevel="h2" />)}
     </div>
   );

@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
 @theme {
+  /* Phone sizes, matching Chrome's Mobile M / Mobile L presets (Mobile S, 320px, is the base). */
+  --breakpoint-xs: 23.4375rem; /* 375px */
+  --breakpoint-ml: 26.5625rem; /* 425px */
   /* Extra breakpoints for large laptops and desktops (after Tailwind's lg: 1024px). */
   --breakpoint-laptop: 90rem; /* 1440px */
   --breakpoint-wide: 120rem; /* 1920px */
@@ -92,6 +95,12 @@
   }
 }
 
+@layer base {
+  @media (max-width: 639px) {
+    input, select, textarea { font-size: 16px; }
+  }
+}
+
 @layer components {
   /* Page container: 1140px on laptops, 1240px from 1440px, 1350px from 1920px.
      Padding is included in the max-width (border-box). */
@@ -104,6 +113,14 @@
   @media (min-width: 640px) { .site-container { padding-inline: 1.5rem; } }
   @media (min-width: 1440px) { .site-container { max-width: 1240px; } }
   @media (min-width: 1920px) { .site-container { max-width: 1350px; } }
+
+  /* Phones: a grid becomes an app-style swipe row that runs to the screen edges
+     and snaps to each card. From 640px it is the normal grid again. */
+  @media (max-width: 639px) {
+    .m-rail { display: flex !important; gap: 0.75rem; overflow-x: auto; scroll-snap-type: x mandatory; margin-inline: -1rem; padding-inline: 1rem; scroll-padding-inline: 1rem; scrollbar-width: none; }
+    .m-rail::-webkit-scrollbar { display: none; }
+    .m-rail > * { flex: 0 0 auto; scroll-snap-align: start; }
+  }
 
   /* Signature motif: a hand-painted Meenakari flower band. */
   .meena-band {
@@ -153,19 +170,21 @@
     font-family: var(--font-sans);
     font-size: 0.6875rem;
     font-weight: 600;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--color-gold);
   }
-  .prose-kalgi { color: var(--color-ink-soft); line-height: 1.75; font-size: 1rem; }
+  /* Phones read at app density (15px); 17px from 640px. */
+  .prose-kalgi { color: var(--color-ink-soft); line-height: 1.7; font-size: 0.9375rem; }
   @media (min-width: 640px) {
-    .eyebrow { font-size: 0.75rem; }
+    .eyebrow { font-size: 0.75rem; letter-spacing: 0.18em; }
     .prose-kalgi { font-size: 1.0625rem; line-height: 1.8; }
     .prose-kalgi h2 { font-size: 1.6rem; }
   }
   .prose-kalgi > * + * { margin-top: 1.1em; }
-  .prose-kalgi h2 { font-size: 1.35rem; line-height: 1.25; color: var(--color-ink); margin-top: 2em; }
-  .prose-kalgi h3 { font-size: 1.25rem; color: var(--color-ink); margin-top: 1.6em; }
+  .prose-kalgi h2 { font-size: 1.2rem; line-height: 1.3; color: var(--color-ink); margin-top: 1.8em; }
+  .prose-kalgi h3 { font-size: 1.05rem; color: var(--color-ink); margin-top: 1.5em; }
+  @media (min-width: 640px) { .prose-kalgi h3 { font-size: 1.25rem; } }
   .prose-kalgi a { color: var(--color-navy); text-decoration-color: var(--color-gold-soft); text-decoration: underline; text-underline-offset: 3px; }
   .prose-kalgi ul { list-style: disc; padding-left: 1.4em; }
   .prose-kalgi ol { list-style: decimal; padding-left: 1.4em; }
@@ -180,8 +199,14 @@
   /* FAQ questions under "Frequently asked questions". */
   .prose-kalgi #frequently-asked-questions ~ h3 { margin-top: 1.4em; font-family: var(--font-instrument), sans-serif; font-size: 1.0625rem; font-weight: 600; }
   .prose-kalgi #frequently-asked-questions ~ h3 + p { margin-top: 0.35em; }
-  .prose-kalgi table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; display: block; overflow-x: auto; }
+  .prose-kalgi table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .prose-kalgi :is(th, td) { border: 1px solid var(--color-line); padding: 0.6em 0.8em; text-align: left; vertical-align: top; }
+  /* Phones: cells keep a readable width and the table scrolls sideways instead of squeezing words one per line. */
+  @media (max-width: 639px) {
+    .prose-kalgi table { font-size: 0.875rem; }
+    .prose-kalgi :is(th, td) { min-width: 8.5rem; padding: 0.55em 0.7em; }
+    .prose-kalgi :is(th, td):first-child { min-width: 6.5rem; }
+  }
   .prose-kalgi th { background: var(--color-paper); color: var(--color-ink); font-weight: 600; }
 }
 
