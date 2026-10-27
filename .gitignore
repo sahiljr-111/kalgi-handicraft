@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+!.env.example
+
+# local uploads (dev only; production uses Cloudinary)
+/.uploads
+.netlify
+/.next-test/

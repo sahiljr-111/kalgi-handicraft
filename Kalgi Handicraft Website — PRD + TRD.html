@@ -1,0 +1,460 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}</style><style>:root{color-scheme:light dark;--md-bg:#fff;--md-text:rgba(0,0,0,.8);--md-muted:rgba(0,0,0,.6);--md-fill:rgba(0,0,0,.04);--md-fill-strong:rgba(0,0,0,.06);--md-rule:rgba(0,0,0,.1);--md-rule-strong:rgba(0,0,0,.16);--md-link:hsl(210 100% 45%)}@media (prefers-color-scheme:dark){:root:where(:not([data-theme="light"])){--md-bg:#0d0d0d;--md-text:rgba(255,255,255,.85);--md-muted:rgba(255,255,255,.6);--md-fill:rgba(255,255,255,.06);--md-fill-strong:rgba(255,255,255,.09);--md-rule:rgba(255,255,255,.14);--md-rule-strong:rgba(255,255,255,.22);--md-link:hsl(210 100% 72%)}}:root[data-theme="dark"]{color-scheme:dark;--md-bg:#0d0d0d;--md-text:rgba(255,255,255,.85);--md-muted:rgba(255,255,255,.6);--md-fill:rgba(255,255,255,.06);--md-fill-strong:rgba(255,255,255,.09);--md-rule:rgba(255,255,255,.14);--md-rule-strong:rgba(255,255,255,.22);--md-link:hsl(210 100% 72%)}:root[data-theme="light"]{color-scheme:light}@media print{:root,:root[data-theme="dark"]{color-scheme:light;--md-bg:#fff;--md-text:rgba(0,0,0,.8);--md-muted:rgba(0,0,0,.6);--md-fill:rgba(0,0,0,.04);--md-fill-strong:rgba(0,0,0,.06);--md-rule:rgba(0,0,0,.1);--md-rule-strong:rgba(0,0,0,.16);--md-link:hsl(210 100% 45%)}}body{background:var(--md-bg);color:var(--md-text);max-width:720px;margin:0 auto;padding:32px;display:flex;flex-direction:column;gap:10px;font:14px/1.55 -apple-system,BlinkMacSystemFont,'SF Pro','Segoe UI',sans-serif;overflow-wrap:break-word}body>:first-child{margin-top:0}h1,h2,h3,h4,h5,h6{margin:6px 0 0;line-height:1.25;font-weight:600;text-wrap:balance}h1{font-size:1.35em}h2{font-size:1.15em;color:var(--md-muted)}h3,h4,h5,h6{font-size:1em}p,ul,ol,blockquote,table,pre,hr{margin:0}strong{font-weight:600}a{color:var(--md-link);text-decoration:none}a:hover{text-decoration:underline}ul,ol{display:flex;flex-direction:column;gap:6px;padding-left:22px}ul{list-style:disc}ol{list-style:decimal}:is(li,td,th)>*+:is(p,ul,ol,blockquote){margin-top:6px}blockquote{display:flex;flex-direction:column;gap:10px;border-left:2px solid var(--md-rule);padding-left:10px;color:var(--md-muted)}:not(pre)>code{background:var(--md-fill);padding:1px 3px;border-radius:4px;font:.92em 'SF Mono',ui-monospace,Menlo,Consolas,monospace}a>code{background:none;color:inherit}pre{background:var(--md-fill);padding:10px 12px;border-radius:6px;overflow-x:auto;font:12px/1.5 'SF Mono',ui-monospace,Menlo,Consolas,monospace;margin-block:4px}pre code{background:none;padding:0;font:inherit}table{width:100%;border-collapse:separate;border-spacing:2px;font:inherit}th,td{padding:6px 8px;border-radius:3px;text-align:left;vertical-align:top}th{background:var(--md-fill-strong);font-weight:600}td{background:var(--md-fill)}:is(th,td) :not(pre)>code{background:transparent}hr{border:0;border-top:1px solid var(--md-rule-strong);margin-block:10px}img{max-width:100%;height:auto;border-radius:4px}</style>
+</head><body>
+<h1>Kalgi Handicraft — D2C Website + Admin Dashboard</h1>
+<h3>Product Requirements Document (PRD) + Technical Requirements Document (TRD)</h3>
+<p><strong>Owner:</strong> Sr | <strong>Client:</strong> Kalgi Handicraft (Akshay Patel, Jasdan, Rajkot, Gujarat)
+<strong>Doc version:</strong> 2.0 | <strong>Date:</strong> Sep 2026</p>
+<hr>
+<h1>PART 1 — PRD</h1>
+<h2>1. Background &amp; Goal</h2>
+<p>Kalgi Handicraft sells wooden Meenakari-work handicrafts (Chowki/Bajot/Patla, Dry Fruit Boxes, Pooja Articles, Jewellery/Gift Boxes) currently only via IndiaMART. Goal: an independent, SEO-ranked website + a self-serve admin dashboard so the owner can manage products and inquiries without a developer.</p>
+<h2>2. Users</h2>
+<table>
+<thead>
+<tr>
+<th>User</th>
+<th>Needs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B2B buyer (gift shops, pooja stores, corporate gifting)</td>
+<td>Browse catalog, see specs/MOQ/price, send bulk inquiry</td>
+</tr>
+<tr>
+<td>Retail buyer</td>
+<td>Browse, see price, WhatsApp/call to order</td>
+</tr>
+<tr>
+<td>Site owner (Akshay) / Admin (you)</td>
+<td>Add/edit/remove products, manage categories, view &amp; respond to inquiries, see basic analytics — all without code</td>
+</tr>
+</tbody>
+</table>
+<h2>3. Functional Requirements — Public Website</h2>
+<h3>3.1 Pages</h3>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Home</td>
+<td>Hero + tagline, category tiles (4), featured products (8–12), trust bar (est. 1999, GST, 4.5★ rating, 6+ yrs), testimonials, blog teaser, sticky WhatsApp CTA</td>
+</tr>
+<tr>
+<td>Category listing (<code>/wooden-chowki</code>, <code>/dry-fruit-box</code>, <code>/pooja-articles</code>, <code>/jewellery-gift-box</code>)</td>
+<td>Grid of products, filters (material, size, price range), sort (price, newest), pagination/infinite scroll, category SEO copy block</td>
+</tr>
+<tr>
+<td>Product detail (<code>/product/[slug]</code>)</td>
+<td>Image gallery (zoom), name, price/starting price, specs table, MOQ, description, &quot;Enquire on WhatsApp&quot; + inquiry form, related products, breadcrumb</td>
+</tr>
+<tr>
+<td>About</td>
+<td>Brand story, workshop/craftsmanship photos, founder info</td>
+</tr>
+<tr>
+<td>Gallery/Portfolio</td>
+<td>Masonry grid of completed work/bulk orders, filterable by category</td>
+</tr>
+<tr>
+<td>Blog (<code>/blog</code>, <code>/blog/[slug]</code>)</td>
+<td>List + detail, SEO-optimized long-form articles, CTA to relevant category</td>
+</tr>
+<tr>
+<td>Contact</td>
+<td>Form, embedded Google Map, phone/WhatsApp, business hours, address</td>
+</tr>
+<tr>
+<td>404 / thank-you page</td>
+<td>Custom 404; inquiry-submitted confirmation page</td>
+</tr>
+</tbody>
+</table>
+<h3>3.2 Inquiry flow (core conversion feature)</h3>
+<ol>
+<li>User submits form (name, phone, email optional, product, quantity, message) <strong>or</strong> clicks WhatsApp CTA (pre-filled message with product name).</li>
+<li>Form submission → saved to DB → email notification to owner → WhatsApp notification (optional, Phase 2) → confirmation shown to user.</li>
+<li>Every inquiry appears in the Admin Dashboard in real time.</li>
+</ol>
+<h3>3.3 Acceptance criteria (samples)</h3>
+<ul>
+<li>Product page loads with image, price, and working WhatsApp link with pre-filled product name.</li>
+<li>Inquiry form validates phone (10-digit) and required fields before submit.</li>
+<li>Category filter updates results without full page reload.</li>
+<li>All pages pass Lighthouse SEO ≥ 90 and are mobile-responsive at 360px width.</li>
+</ul>
+<h2>4. Functional Requirements — Admin Dashboard (<code>/admin</code>)</h2>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Features</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Auth</strong></td>
+<td>Email+password login (single/multi admin), protected routes, session/JWT</td>
+</tr>
+<tr>
+<td><strong>Dashboard home</strong></td>
+<td>Stats: total products, total inquiries (this week/month), recent inquiries list, quick &quot;add product&quot; button</td>
+</tr>
+<tr>
+<td><strong>Product management</strong></td>
+<td>List (search/filter/sort), Add, Edit, Delete, Duplicate; fields: name, slug (auto+editable), category, price, unit, material, size, color options, MOQ, description, SEO title/meta, multiple image upload (drag-drop, reorder, set primary), status (draft/published)</td>
+</tr>
+<tr>
+<td><strong>Category management</strong></td>
+<td>Add/edit/delete category, reorder display sequence, category SEO copy</td>
+</tr>
+<tr>
+<td><strong>Inquiry management</strong></td>
+<td>List (filterable by status/date/product), view detail, mark status (New/Contacted/Converted/Closed), add internal notes, export to CSV, delete/archive</td>
+</tr>
+<tr>
+<td><strong>Blog management</strong> (Phase 2)</td>
+<td>Add/edit posts, rich text editor, featured image, SEO fields, publish/draft</td>
+</tr>
+<tr>
+<td><strong>Media library</strong></td>
+<td>Browse/reuse uploaded images across products</td>
+</tr>
+<tr>
+<td><strong>Settings</strong></td>
+<td>Business info (phone, WhatsApp, address, hours) editable — reflects site-wide (footer, contact page, schema) without code change</td>
+</tr>
+</tbody>
+</table>
+<h3>4.1 Acceptance criteria</h3>
+<ul>
+<li>Admin can add a new product with images and see it live on the public site within seconds (ISR revalidate or on-demand revalidation).</li>
+<li>New inquiry submitted on the public site appears in dashboard list without manual refresh needed on next load, and triggers an email.</li>
+<li>Non-technical user (Akshay) can complete &quot;add product&quot; flow in under 3 minutes after a walkthrough.</li>
+</ul>
+<h2>5. Non-Functional Requirements</h2>
+<ul>
+<li>Mobile-first, LCP &lt; 2.5s, SEO score 90+, WCAG AA basics (alt text, contrast, focus states)</li>
+<li>Dashboard usable on desktop + tablet (not mobile-critical)</li>
+<li>Role-based access ready for future (owner vs staff), even if only one role used initially</li>
+<li>Daily automated DB backup (MongoDB Atlas backup)</li>
+</ul>
+<h2>6. Out of Scope (Phase 1)</h2>
+<p>Payments/cart checkout, multi-language, customer accounts, multi-vendor.</p>
+<hr>
+<h1>PART 2 — TRD</h1>
+<h2>7. Architecture Overview</h2>
+<pre><code>┌─────────────────────────┐        ┌──────────────────────────┐
+│  PUBLIC SITE (Next.js)  │        │  ADMIN DASHBOARD          │
+│  SSR/SSG/ISR, Vercel    │        │  Next.js (same repo,      │
+│  Public pages + SEO     │        │  /admin routes, auth-gated)│
+└───────────┬──────────────┘        └────────────┬──────────────┘
+            │  REST/API calls (fetch, revalidate on write)      │
+            ▼                                                   ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                BACKEND API (Node.js + Express)                  │
+│  /api/products  /api/categories  /api/inquiries  /api/auth      │
+│  Hosted on Render/Railway (or Next.js API routes if monorepo)   │
+└───────────┬──────────────────────────────┬──────────────────────┘
+            ▼                              ▼
+   ┌──────────────────┐         ┌────────────────────┐
+   │ MongoDB Atlas     │         │ Cloudinary (images) │
+   │ Products,         │         │ CDN + auto-optimize │
+   │ Categories,       │         └────────────────────┘
+   │ Inquiries, Users  │
+   └──────────────────┘
+            │
+            ▼
+   Email (Resend/Nodemailer) on new inquiry → owner inbox
+</code></pre>
+<p><strong>Two build options</strong> — pick one:</p>
+<ul>
+<li><strong>A. Single Next.js app</strong> (recommended, faster): public pages + <code>/admin</code> dashboard + <code>/api</code> routes all in one Next.js project → deploy as one unit on Vercel. Simpler, less infra to manage.</li>
+<li><strong>B. Separate Node/Express backend</strong> (better if you want a reusable API / mobile app later, more of a &quot;full MERN&quot; portfolio piece): Express + MongoDB API deployed separately (Render/Railway), Next.js frontend + dashboard consume it.</li>
+</ul>
+<blockquote>
+<p>Given this is a portfolio-building opportunity for you as a MERN dev, <strong>Option B</strong> shows fuller-stack skill (separate API you designed, auth, deployment across two services). Below the TRD is written for <strong>Option B</strong>; note where it simplifies if you choose A.</p>
+</blockquote>
+<h2>8. Tech Stack</h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Technology</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Public frontend</td>
+<td>Next.js 15 (App Router) + Tailwind CSS</td>
+<td>SSG for category/product pages, ISR revalidation on product update</td>
+</tr>
+<tr>
+<td>Admin dashboard</td>
+<td>Next.js (same or separate app) + Tailwind + shadcn/ui</td>
+<td>Auth-gated <code>/admin</code>, table components, forms</td>
+</tr>
+<tr>
+<td>Backend API</td>
+<td>Node.js + Express + TypeScript</td>
+<td>REST API, matches MERN skillset</td>
+</tr>
+<tr>
+<td>Database</td>
+<td>MongoDB Atlas (free/shared tier to start)</td>
+<td>Products, Categories, Inquiries, Users</td>
+</tr>
+<tr>
+<td>ORM</td>
+<td>Mongoose</td>
+<td>Schema validation</td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>JWT (httpOnly cookie) or NextAuth (credentials provider)</td>
+<td>Admin login only — public site has no auth</td>
+</tr>
+<tr>
+<td>Image storage</td>
+<td>Cloudinary</td>
+<td>Upload widget, auto-format/resize, CDN delivery</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>Resend or Nodemailer + Gmail/Zoho SMTP</td>
+<td>Inquiry notifications</td>
+</tr>
+<tr>
+<td>Hosting — frontend/dashboard</td>
+<td>Vercel</td>
+<td>Free tier, CDN, image optimization</td>
+</tr>
+<tr>
+<td>Hosting — backend API</td>
+<td>Render or Railway</td>
+<td>Free/low-cost tier, easy Node deploy</td>
+</tr>
+<tr>
+<td>Analytics/SEO</td>
+<td>Google Analytics 4, Google Search Console</td>
+<td>Free</td>
+</tr>
+<tr>
+<td>Domain/Email</td>
+<td>Custom domain + Zoho Mail / Google Workspace</td>
+<td>Credibility</td>
+</tr>
+</tbody>
+</table>
+<h2>9. Data Models (Mongoose)</h2>
+<pre><code class="language-js">// Category
+{
+  name, slug, description, seoTitle, seoDescription,
+  image, sortOrder, isActive
+}
+
+// Product
+{
+  name, slug, category: ObjectId(ref: Category),
+  priceFrom: Number, unit: String,             // &#34;per piece&#34;
+  material, size, colorOptions: [String],
+  moq: Number,
+  images: [{ url, alt, isPrimary }],
+  description: String,
+  seoTitle, seoDescription,
+  status: &#34;draft&#34; | &#34;published&#34;,
+  createdAt, updatedAt
+}
+
+// Inquiry
+{
+  name, phone, email,
+  productId: ObjectId(ref: Product), productName,  // denormalized for easy listing
+  quantity, message,
+  source: &#34;form&#34; | &#34;whatsapp&#34;,
+  status: &#34;new&#34; | &#34;contacted&#34; | &#34;converted&#34; | &#34;closed&#34;,
+  notes: String,
+  createdAt
+}
+
+// User (admin)
+{
+  email, passwordHash, role: &#34;owner&#34; | &#34;staff&#34;, createdAt
+}
+</code></pre>
+<h2>10. API Endpoints</h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Auth</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/api/products</code></td>
+<td>Public</td>
+<td>List products (filter by category, status=published)</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/products/:slug</code></td>
+<td>Public</td>
+<td>Product detail</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/products</code></td>
+<td>Admin</td>
+<td>Create product</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td><code>/api/products/:id</code></td>
+<td>Admin</td>
+<td>Update product</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>/api/products/:id</code></td>
+<td>Admin</td>
+<td>Delete product</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/categories</code></td>
+<td>Public</td>
+<td>List categories</td>
+</tr>
+<tr>
+<td>POST/PUT/DELETE</td>
+<td><code>/api/categories/:id</code></td>
+<td>Admin</td>
+<td>Manage categories</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/inquiries</code></td>
+<td>Public</td>
+<td>Submit inquiry (rate-limited)</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/inquiries</code></td>
+<td>Admin</td>
+<td>List/filter inquiries</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td><code>/api/inquiries/:id</code></td>
+<td>Admin</td>
+<td>Update status/notes</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/auth/login</code></td>
+<td>Public</td>
+<td>Admin login → JWT cookie</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/upload</code></td>
+<td>Admin</td>
+<td>Image upload → Cloudinary, returns URL</td>
+</tr>
+</tbody>
+</table>
+<p><strong>On product create/update:</strong> backend also triggers <code>POST {NEXT_PUBLIC_SITE_URL}/api/revalidate?path=/product/[slug]</code> so the public site updates instantly (Next.js on-demand ISR) instead of waiting for a rebuild.</p>
+<h2>11. Frontend Structure (Next.js, App Router)</h2>
+<pre><code>/app
+  /(public)
+    page.tsx                → Home
+    /wooden-chowki/page.tsx  → Category (repeat per category, or dynamic [category])
+    /product/[slug]/page.tsx
+    /about/page.tsx
+    /gallery/page.tsx
+    /blog/page.tsx, /blog/[slug]/page.tsx
+    /contact/page.tsx
+  /admin
+    layout.tsx               → auth check, sidebar nav
+    /page.tsx                → dashboard home/stats
+    /products/page.tsx, /products/[id]/edit/page.tsx, /products/new/page.tsx
+    /categories/page.tsx
+    /inquiries/page.tsx, /inquiries/[id]/page.tsx
+    /login/page.tsx
+  /api/revalidate/route.ts   → on-demand ISR trigger
+/lib      → api client, auth helpers
+/components → ProductCard, Gallery, InquiryForm, AdminTable, etc.
+</code></pre>
+<h2>12. Backend Structure (Express)</h2>
+<pre><code>/src
+  /models     → Product.ts, Category.ts, Inquiry.ts, User.ts
+  /routes     → products.ts, categories.ts, inquiries.ts, auth.ts, upload.ts
+  /middleware → auth.ts (JWT verify), rateLimiter.ts, errorHandler.ts
+  /services   → emailService.ts, cloudinaryService.ts
+  server.ts
+</code></pre>
+<h2>13. Security</h2>
+<ul>
+<li>Admin routes protected by JWT middleware; passwords hashed with bcrypt.</li>
+<li>Inquiry endpoint rate-limited + basic honeypot/reCAPTCHA to stop spam.</li>
+<li>CORS restricted to the frontend domain.</li>
+<li><code>.env</code> for secrets (DB URI, JWT secret, Cloudinary/email keys) — never committed.</li>
+</ul>
+<h2>14. SEO Implementation (unchanged from v1, carried forward)</h2>
+<ul>
+<li><code>generateMetadata()</code> per page; JSON-LD <code>Product</code> + <code>LocalBusiness</code> + <code>BreadcrumbList</code></li>
+<li><code>sitemap.xml</code>, <code>robots.txt</code>, <code>next/image</code> everywhere, semantic headings</li>
+<li>Google Business Profile + NAP consistency</li>
+<li>Target keywords: &quot;wooden chowki manufacturer Gujarat&quot;, &quot;meenakari dry fruit box wholesale&quot;, &quot;pooja bajot online India&quot;, &quot;handicraft jewellery box manufacturer Rajkot&quot;</li>
+</ul>
+<h2>15. Build Roadmap</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Scope</th>
+<th>Est. time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Backend API (models, CRUD routes, auth) + MongoDB Atlas setup</td>
+<td>4–5 days</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Admin dashboard (login, product CRUD, image upload, inquiry list)</td>
+<td>5–6 days</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Public site (Home, category, product, about, contact, inquiry form)</td>
+<td>5–6 days</td>
+</tr>
+<tr>
+<td>4</td>
+<td>SEO (schema, sitemap, metadata), blog module</td>
+<td>2–3 days</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Content population, GMB setup, GA4/GSC, testing, deploy</td>
+<td>2–3 days</td>
+</tr>
+</tbody>
+</table>
+<h2>16. Success Metrics (unchanged)</h2>
+<p>30 days: live + indexed + GMB verified · 60 days: 5+ keywords top-20, 20+ leads/mo · 90 days: 5+ keywords top-10, 50+ leads/mo, 500+ organic visits/mo</p>
+
+</body></html>

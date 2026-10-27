@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+<rect width="800" height="800" fill="#1e1f33"/>
+<path d="M190 690V330a210 210 0 0 1 420 0v360z" fill="#262842" stroke="#c1a25f" stroke-opacity=".45" stroke-width="3"/>
+<g fill="none" stroke="#c1a25f" stroke-width="10" stroke-linejoin="round"><path d="M330 240h140l-18 270h-104z"/><path d="M342 330h116" stroke-dasharray="6 14"/><path d="M350 420h100" stroke-dasharray="6 14"/></g>
+<text x="400" y="600" text-anchor="middle" font-family="Georgia, serif" font-size="44" fill="#fbf6ec">Meenakari Glass</text>
+<text x="400" y="648" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" letter-spacing="4" fill="#c1a25f">PHOTO COMING SOON</text>
+</svg>
