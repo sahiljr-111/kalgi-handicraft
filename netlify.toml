@@ -5,3 +5,6 @@
 
 [build.environment]
   NODE_VERSION = "22"
+  # These settings are not secrets (the folder name and public values appear in the
+  # site's code), so Netlify's secret scanner must not fail the build on them.
+  SECRETS_SCAN_OMIT_KEYS = "CLOUDINARY_FOLDER,CLOUDINARY_CLOUD_NAME,CLOUDINARY_API_KEY,NEXT_PUBLIC_SITE_URL,NEXT_PUBLIC_NOINDEX,NEXT_PUBLIC_GA_ID,NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,ALLOW_LOCAL_UPLOADS"
